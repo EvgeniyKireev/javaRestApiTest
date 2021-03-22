@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class RestApiController {
@@ -23,13 +24,20 @@ public class RestApiController {
         newsService.create(news);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
     @GetMapping(value = "/api/news")
     public ResponseEntity<List<News>> findAll(){
         final List<News> newsList = newsService.findAll();
 
         return newsList != null && !newsList.isEmpty()
                 ? new ResponseEntity<>(newsList, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    @GetMapping("/api/news/{id}")
+    public ResponseEntity<Optional<News>> findById(@PathVariable(name = "id") Long id) {
+        final Optional<News> news= newsService.findById(id);
+
+        return news.isPresent()
+                ? new ResponseEntity<>(news, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

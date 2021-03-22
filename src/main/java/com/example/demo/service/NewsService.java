@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NewsService {
@@ -15,12 +16,16 @@ public class NewsService {
     public void create(News news){
         newsRepository.save(news);
     }
+    public void delete(Long id) {newsRepository.deleteById(id);}
 
     public List<News> findAll(){
         return newsRepository.findAll();
     }
 
-    public News find(Long id){
-        return newsRepository.getOne(id);
+    public Optional<News> findById(Long id) {
+        return newsRepository.findById(id);
     }
+
+
+
 }
