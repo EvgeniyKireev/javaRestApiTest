@@ -40,4 +40,10 @@ public class RestApiController {
                 ? new ResponseEntity<>(news, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+    @DeleteMapping(value = "/api/news/{id}")
+    public ResponseEntity<String> DeleteNewsById(@PathVariable(name = "id") Long id) {
+        String message = newsService.DeleteNewsById(id);
+
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
 }

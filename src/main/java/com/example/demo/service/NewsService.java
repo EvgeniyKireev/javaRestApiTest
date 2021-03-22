@@ -16,14 +16,17 @@ public class NewsService {
     public void create(News news){
         newsRepository.save(news);
     }
-    public void delete(Long id) {newsRepository.deleteById(id);}
-
     public List<News> findAll(){
         return newsRepository.findAll();
     }
 
     public Optional<News> findById(Long id) {
         return newsRepository.findById(id);
+    }
+    public String DeleteNewsById(Long id) {
+        newsRepository.deleteById(id);
+
+        return  "Новость удалена";
     }
 
 
