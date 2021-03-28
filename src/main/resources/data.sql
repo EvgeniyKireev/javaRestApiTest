@@ -1,5 +1,3 @@
-    INSERT INTO person(first_name, last_name, city, street)
-VALUES ('n1', 'f1', 'msk', 'zzz'),
-('n2', 'f2', 'msk2', 'zzz2'),
-('n3', 'f3', 'msk3', 'zzz3'),
-('n4', 'f4', 'msk4', 'zzz4');
+ INSERT INTO news(title, fullname, createat, updateat, textnews, categoryname)
+VALUES ('Доллар', 'Иванов Иван Иванович', '22.03.2020', '22.03.2021', 'Доллар падает', 'Финансы'),
+('Евро', 'Петров Петр Петрович', '22.03.2020', '22.03.2021', 'Евро падает', 'Финансы');
